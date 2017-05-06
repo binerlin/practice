@@ -120,7 +120,6 @@ def hangman(secretWord):
 	gnum = 8
 	print('Welcome to the game, Hangman!')
 	print('I am thinking of a word that is %s letters long.' % len(secretWord))
-	print(secretWord)
 
 	# GAME START
 	lettersGuessed = []
