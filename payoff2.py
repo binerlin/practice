@@ -6,27 +6,22 @@
 # the parameters contain the initial balance and annual interest rate 
 # At the end, balance should be less than total payment.
 
-def lowers_pay(balance, annualInterestRate):
+def lowest_pay(balance, rate):
 	# 'i' is the multiples of $10 which equals payments divide 10 
 	i = 0
-	totalpay = 0
-	
+	base = 0
 	while True:
-		# get the lowers payment
-		if totalpay >= balance:
-			return payment
+		if base < 0:
 			break
-		# 'n' is the number that count of month
-		n = 0
+
 		i = i + 1
-		payment = 10 * i
-		totalpay = payment * 12
-		 
-		while True:
-			# get the latest balance
-			if n = 13:
-				break
-			
-			n = n + 1
-			balance = balance - payment
-			balance = balance + balance * (annualInterestRate/12)
+		payment = i * 10
+		base = balance
+		for n in range(12):
+			base = base - payment
+			base = round(base * (1+rate/12), 1)
+
+	print('Lowest Payment: %s' % payment)
+
+
+
