@@ -21,7 +21,6 @@ def creditcard_pay_off(balance, annualInterestRate = 0.2, monthlyPaymentRate = 0
 	print('Total paid: %.2f' % Total_pay)
 	print('Remaining balance: %.2f' % balance)
 
-creditcard_pay_off(4213)
 
 
 
