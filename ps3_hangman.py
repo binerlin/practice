@@ -45,19 +45,6 @@ def chooseWord(wordlist):
 # so that it can be accessed from anywhere in the program
 wordlist = loadWords()
 
-def isWordGuessed(secretWord, lettersGuessed):
-	'''
-	secretWord: string, the word the user is guessing
-	lettersGuessed: list, what letters have been guessed so far
-	returns: boolean, True if all the letters of secretWord are in lettersGuessed;
-	  False otherwise
-	'''
-	# FILL IN YOUR CODE HERE...
-	for i in secretWord:
-		if not(i in lettersGuessed):
-			return False
-	return True
-
 
 
 def getGuessedWord(secretWord, lettersGuessed):
@@ -65,7 +52,7 @@ def getGuessedWord(secretWord, lettersGuessed):
 	secretWord: string, the word the user is guessing
 	lettersGuessed: list, what letters have been guessed so far
 	returns: string, comprised of letters and underscores that represents
-	  what letters in secretWord have been guessed so far.
+	what letters in secretWord have been guessed so far.
 	'''
 	# FILL IN YOUR CODE HERE...
 	curstr = ''
@@ -83,12 +70,8 @@ def getAvailableLetters(lettersGuessed):
 	'''
 	lettersGuessed: list, what letters have been guessed so far
 	returns: string, comprised of letters that represents what letters have not
-	  yet been guessed.
+	yet been guessed.
 	'''
-	# FILL IN YOUR CODE HERE...
-	# csl means that current strings left 
-	# which are letters in alphabetical order 
-	# between 'a' and 'z' have been not guessed
 	csl = string.ascii_lowercase
 	for i in lettersGuessed:
 		csl = csl.split(i)[0] + csl.split(i)[1]
@@ -169,5 +152,6 @@ def hangman(secretWord):
 # and run this file to test! (hint: you might want to pick your own
 # secretWord while you're testing)
 
-secretWord = chooseWord(wordlist).lower()
-hangman(secretWord)
+if __name__ == '__main__':
+	secretWord = chooseWord(wordlist).lower()
+	hangman(secretWord)
