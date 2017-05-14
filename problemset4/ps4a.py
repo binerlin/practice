@@ -82,11 +82,9 @@ def getWordScore(word, n):
     	score = score + 50
 
     for i in word:
-    	l = SCRABBLE_LETTER_VALUES[i]
-    	lscore = lscore + l
+    	lscore = lscore + SCRABBLE_LETTER_VALUES[i]
 
-    lscore = lscore * len(word)
-    score = lscore + score
+    score = score + lscore * len(word)
     return score
 
 
@@ -105,9 +103,10 @@ def displayHand(hand):
 
     hand: dictionary (string -> int)
     """
-    for letter in hand.keys():
-        for j in range(hand[letter]):
-             print(letter)             # print all on the same line
+    displaystr = ''
+    for letter, value in hand.items():
+        displaystr = displaystr + (letter + ' ') * value
+    print(displaystr)             # print all on the same line
 # print an empty line
 
 #
@@ -126,7 +125,7 @@ def dealHand(n):
     returns: dictionary (string -> int)
     """
     hand={}
-    numVowels = n / 3
+    numVowels = int(n/3)
     
     for i in range(numVowels):
         x = VOWELS[random.randrange(0,len(VOWELS))]
@@ -158,8 +157,10 @@ def updateHand(hand, word):
     returns: dictionary (string -> int)
     """
     # TO DO ... <-- Remove this comment when you code this function
-
-
+    cphand = hand.copy()
+    for i in word:
+        cphand[i] = cphand[i] - 1
+    return cphand
 
 #
 # Problem #3: Test word validity
@@ -176,7 +177,21 @@ def isValidWord(word, hand, wordList):
     wordList: list of lowercase strings
     """
     # TO DO ... <-- Remove this comment when you code this function
+    cphand = hand.copy()
+    if not(word in wordList):
+        return False
 
+    for i in word:
+        if not(i in hand.keys()):
+            return False
+
+        cphand[i] = cphand[i] - 1
+
+    for i in cphand.values():
+        if i < 0:
+            return False
+
+    return True
 
 #
 # Problem #4: Playing a hand
