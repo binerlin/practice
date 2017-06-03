@@ -309,10 +309,3 @@ def playGame(wordList):
 # Build data structures used for entire session and play game
 #
 
-if __name__ == '__main__':
-	'''
-	a word game.
-	HAND_SIZE default value is 7. You can change it.
-	'''
-	wordList = loadWords()
-	playGame(wordList)
